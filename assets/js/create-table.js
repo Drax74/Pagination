@@ -1,6 +1,7 @@
 var tableTemplate = require('../../templates/table.handlebars');
 var table = document.querySelector('#table-content');
 var loader = document.querySelector('.loader');
+var pagination = document.querySelectorAll('.pagination');
 
 // create html by using handlebars template
 var createHtml = function(data) {
@@ -25,6 +26,9 @@ export function createTable(repositories, page) {
 
   table.innerHTML = '';
   loader.style.display = 'none';
+  for (let i = 0; i < pagination.length; i++) {
+     pagination[i].style.visibility = 'visible';
+  }
 
   repositories.slice(offset, offset+itemsPerPage).forEach(createHtml);
 }
